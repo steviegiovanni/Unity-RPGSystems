@@ -5,12 +5,26 @@ using UnityEngine;
 public class RPGDefaultStats : RPGStatCollection {
 	protected override void ConfigureStats ()
 	{
-		RPGStat health = CreateOrGetStat (RPGStatType.Health);
-		health.StatName = "health";
-		health.StatValue = 100;
+		var stamina = CreateOrGetStat<RPGAttribute>(RPGStatType.Stamina);
+		stamina.StatName = "Stamina";
+		stamina.StatBaseValue = 10;
 
-		RPGStat mana = CreateOrGetStat (RPGStatType.Mana);
+		var wisdom = CreateOrGetStat<RPGAttribute>(RPGStatType.Wisdom);
+		wisdom.StatName = "Wisdom";
+		wisdom.StatBaseValue = 5;
+
+		var health = CreateOrGetStat<RPGVital>(RPGStatType.Health);
+		health.StatName = "health";
+		health.StatBaseValue = 100;
+		health.AddLinker (new RPGStatLinkerBasic (CreateOrGetStat<RPGAttribute> (RPGStatType.Stamina), 10f));
+		health.UpdateLinkers ();
+		health.SetCurrentValueToMax ();
+
+		var mana = CreateOrGetStat<RPGVital>(RPGStatType.Mana);
 		mana.StatName = "mana";
-		mana.StatValue = 50;
+		mana.StatBaseValue = 2000;
+		mana.AddLinker (new RPGStatLinkerBasic (CreateOrGetStat<RPGAttribute> (RPGStatType.Wisdom), 50f));
+		mana.UpdateLinkers ();
+		mana.SetCurrentValueToMax ();
 	}
 }

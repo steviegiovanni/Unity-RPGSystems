@@ -4,25 +4,29 @@ using UnityEngine;
 
 public class RPGStat{
 	private string statName;
-	private int statValue;
+	private int statBaseValue;
 
 	public string StatName{
 		get{ return statName; }
 		set{ statName = value;}
 	}
 
-	public int StatValue{
-		get{ return statValue;}
-		set{ statValue = value;}
+	public virtual int StatValue{
+		get{ return StatBaseValue;}
+	}
+
+	public virtual int StatBaseValue{
+		get{ return statBaseValue;}
+		set{ statBaseValue = value;}
 	}
 
 	public RPGStat(){
 		this.StatName = string.Empty;
-		this.StatValue = 0;
+		this.StatBaseValue = 0;
 	}
 
 	public RPGStat(string name, int value){
 		this.StatName = name;
-		this.StatValue = value;
+		this.StatBaseValue = value;
 	}
 }

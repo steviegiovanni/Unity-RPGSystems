@@ -23,16 +23,20 @@ public class RPGStatCollection{
 		return null;
 	}
 
-	protected RPGStat CreateStat(RPGStatType statType){
-		RPGStat stat = new RPGStat ();
-		statDict.Add(statType, stat);
+	public T GetStat<T>(RPGStatType type) where T : RPGStat{
+		return GetStat(type) as T;
+	}
+
+	protected T CreateStat<T>(RPGStatType statType) where T: RPGStat{
+		T stat = System.Activator.CreateInstance<T>();
+		statDict.Add(statType, (RPGStat)stat);
 		return stat;
 	}
 
-	protected RPGStat CreateOrGetStat(RPGStatType statType){
-		RPGStat stat = GetStat (statType);
+	protected T CreateOrGetStat<T>(RPGStatType statType) where T:RPGStat{
+		T stat = GetStat<T>(statType);
 		if (stat == null)
-			stat = CreateStat (statType);
+			stat = CreateStat<T>(statType);
 		return stat;
 	}
 }
