@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class RPGStatModBasePercent: RPGStatModifier{
 	#region implemented abstract members of RPGStatModifier
 

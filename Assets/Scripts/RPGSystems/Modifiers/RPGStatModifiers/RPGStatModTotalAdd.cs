@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class RPGStatModTotalAdd  : RPGStatModifier {
 	#region implemented abstract members of RPGStatModifier
 
