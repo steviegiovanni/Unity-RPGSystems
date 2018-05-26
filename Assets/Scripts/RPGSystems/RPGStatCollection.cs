@@ -97,7 +97,7 @@ public class RPGStatCollection : MonoBehaviour{
 	}
 
 	public void ClearStatModifier(RPGStatType target){
-		ClearStatModifier(target:, false);
+		ClearStatModifier(target, false);
 	}
 
 	public void ClearStatModifier(RPGStatType target, bool update){
