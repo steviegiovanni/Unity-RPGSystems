@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RPGStatTest : MonoBehaviour {
-	private RPGStatCollection stats;
+	private RPGDefaultStats stats;
 
 	// Use this for initialization
 	void Start () {
 		stats = new RPGDefaultStats();
+
 
 		DisplayStatValues ();
 

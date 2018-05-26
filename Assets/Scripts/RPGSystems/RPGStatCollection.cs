@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RPGStatCollection : MonoBehaviour{
+public class RPGStatCollection: MonoBehaviour{
 	private Dictionary<RPGStatType, RPGStat> statDict;
 
 	public Dictionary<RPGStatType, RPGStat> StatDict{
@@ -13,11 +13,16 @@ public class RPGStatCollection : MonoBehaviour{
 		}
 	}
 
+	protected virtual void ConfigureStats (){}
+
 	private void Awake(){
 		ConfigureStats ();
 	}
 
-	protected virtual void ConfigureStats (){}
+	public RPGStatCollection(){
+		statDict = new Dictionary<RPGStatType, RPGStat> ();
+		ConfigureStats ();
+	}
 
 	public bool ContainStat(RPGStatType statType){
 		return StatDict.ContainsKey (statType);
@@ -132,6 +137,25 @@ public class RPGStatCollection : MonoBehaviour{
 			}
 		} else {
 			Debug.Log ("[RPGStatCollection] Trying to update Stat Modifiers to \"" + target.ToString () + "\", but RPGStatCollection does not contain that stat");
+		}
+	}
+
+	public void ScaleStatCollection(int level){
+		foreach (var key in StatDict.Keys) {
+			ScaleStat(key, level);
+		}
+	}
+
+	public void ScaleStat(RPGStatType target, int level){
+		if (ContainStat (target)) {
+			var modStat = GetStat (target) as IStatScalable;
+			if (modStat != null) {
+				modStat.ScaleStat (level);
+			} else {
+				Debug.Log ("[RPGStatCollection] Trying to scale Stat Modifiers to non modifiable stat\"" + target.ToString () + "\"");
+			}
+		} else {
+			Debug.Log ("[RPGStatCollection] Trying to scale Stat Modifiers to \"" + target.ToString () + "\", but RPGStatCollection does not contain that stat");
 		}
 	}
 }

@@ -34,6 +34,12 @@ public class RPGAttribute: RPGStatModifiable, IStatScalable, IStatLinkable{
 		linker.OnValueChange += OnLinkerValueChange;
 	}
 
+	public void RemoveLinker (RPGStatLinker linker)
+	{
+		statLinkers.Remove (linker);
+		linker.OnValueChange -= OnLinkerValueChange;
+	}
+
 	public void ClearLinkers ()
 	{
 		foreach (var linker in statLinkers) {

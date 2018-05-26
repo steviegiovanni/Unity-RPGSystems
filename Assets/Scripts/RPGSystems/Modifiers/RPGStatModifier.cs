@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[System.Serializable]
 public abstract class RPGStatModifier{
-	private float modValue;
+	[SerializeField]
+	private float modValue = 0f;
+
+	[SerializeField]
+	private bool stacks = true;
 
 	public event EventHandler OnValueChange;
 
 	public abstract int Order {get;}
-
-	public bool Stacks {get; set;}
 
 	public float ModValue{
 		get{ return modValue;}
@@ -22,6 +25,11 @@ public abstract class RPGStatModifier{
 				}
 			}
 		}
+	}
+
+	public bool Stacks {
+		get { return stacks; } 
+		set{ stacks = value; }
 	}
 
 	public RPGStatModifier(float value){
