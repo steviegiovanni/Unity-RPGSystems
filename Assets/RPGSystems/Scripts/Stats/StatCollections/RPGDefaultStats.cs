@@ -5,8 +5,6 @@ using UnityEngine;
 public class RPGDefaultStats : RPGStatCollection {
 	protected override void ConfigureStats ()
 	{
-		Debug.Log ("reached");
-
 		var stamina = CreateOrGetStat<RPGAttribute>(RPGStatType.Stamina);
 		stamina.StatName = "Stamina";
 		stamina.StatBaseValue = 10;
