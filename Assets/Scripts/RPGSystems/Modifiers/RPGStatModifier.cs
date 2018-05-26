@@ -1,44 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class RPGStatModifier{
-	public enum Types{
-		None,
-		BaseValuePercent,
-		BaseValueAdd,
-		TotalValuePercent,
-		TotalValueAdd
-	}
-
-	private Types modType;
+public abstract class RPGStatModifier{
 	private float modValue;
-	private RPGStatType statType;
 
-	public Types ModType{
-		get{ return modType;}
-		set{ modType = value;}
-	}
+	public event EventHandler OnValueChange;
+
+	public abstract int Order {get;}
+
+	public bool Stacks {get; set;}
 
 	public float ModValue{
 		get{ return modValue;}
-		set{ modValue = value;}
+		set{ 
+			if (modValue != value) {
+				modValue = value;
+				if (OnValueChange != null) {
+					OnValueChange (this, null);
+				}
+			}
+		}
 	}
 
-	public RPGStatType StatType{
-		get{ return statType;}
-		set{ statType = value;}
+	public RPGStatModifier(float value){
+		modValue = 0;
+		Stacks = false;
 	}
 
-	public RPGStatModifier(){
-		ModType = Types.None;
-		ModValue = 0;
-		StatType = RPGStatType.None;
+	public RPGStatModifier(float value, bool stacks){
+		modValue = value;
+		Stacks = stacks;
 	}
 
-	public RPGStatModifier(RPGStatType targetStat, Types modType, float modValue){
-		ModType = modType;
-		ModValue = modValue;
-		StatType = targetStat;
-	}
+	public abstract int ApplyModifier (int statValue, float modValue);
 }

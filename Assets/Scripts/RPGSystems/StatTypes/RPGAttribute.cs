@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class RPGAttribute: RPGStatModifiable, IStatScalable, IStatLinkable{
 	private int statLevelValue;
@@ -20,6 +21,7 @@ public class RPGAttribute: RPGStatModifiable, IStatScalable, IStatLinkable{
 	public virtual void ScaleStat (int level)
 	{
 		statLevelValue = level;
+		TriggerValueChange ();
 	}
 
 	#endregion
@@ -29,10 +31,15 @@ public class RPGAttribute: RPGStatModifiable, IStatScalable, IStatLinkable{
 	public void AddLinker (RPGStatLinker linker)
 	{
 		statLinkers.Add (linker);
+		linker.OnValueChange += OnLinkerValueChange;
 	}
 
 	public void ClearLinkers ()
 	{
+		foreach (var linker in statLinkers) {
+			linker.OnValueChange -= OnLinkerValueChange;
+		}
+
 		statLinkers.Clear ();
 	}
 
@@ -41,11 +48,11 @@ public class RPGAttribute: RPGStatModifiable, IStatScalable, IStatLinkable{
 		statLinkerValue = 0;
 		foreach (RPGStatLinker link in statLinkers)
 			statLinkerValue += link.Value;
+		TriggerValueChange ();
 	}
 
 	public int StatLinkerValue {
 		get {
-			UpdateLinkers ();
 			return statLinkerValue;
 		}
 	}
@@ -54,5 +61,9 @@ public class RPGAttribute: RPGStatModifiable, IStatScalable, IStatLinkable{
 
 	public RPGAttribute(){
 		statLinkers = new List<RPGStatLinker> ();
+	}
+
+	private void OnLinkerValueChange(object linker, EventArgs args){
+		UpdateLinkers ();
 	}
 }
