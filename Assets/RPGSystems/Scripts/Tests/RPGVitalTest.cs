@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using RPGSystems.StatSystem;
 
 public class RPGVitalTest : MonoBehaviour {
 	private RPGStatCollection stats;

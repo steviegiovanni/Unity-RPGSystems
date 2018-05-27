@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPGSystems.StatSystem;
 
 public class RPGStatTest : MonoBehaviour {
 	private RPGDefaultStats stats;
