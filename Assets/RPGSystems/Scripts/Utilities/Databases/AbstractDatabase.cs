@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class AbstractDatabase<T> : ScriptableObject where T:IDatabaseAsset{
+namespace RPGSystems.Utility.Database{
+
+public abstract class AbstractDatabase<T> : ScriptableObject where T:IDatabaseAsset{
 	[SerializeField]
 	private List<T> objects;
 
@@ -15,20 +18,31 @@ public class AbstractDatabase<T> : ScriptableObject where T:IDatabaseAsset{
 		}
 	}
 
+	protected abstract void OnAddObject (T obj);
+	protected abstract void OnRemoveObject (T obj);
+
 	public void Add(T obj){
 		Objects.Add (obj);
+		OnAddObject (obj);
 	}
 
 	public void Remove(T obj){
 		Objects.Remove (obj);
+		OnRemoveObject (obj);
 	}
 
 	public void RemoveAt(int index){
+		var obj = GetAtIndex (index);
 		Objects.RemoveAt (index);
+		OnRemoveObject (obj);
+
 	}
 
 	public void Replace(int index, T obj){
+		var oldObj = Objects [index];
 		Objects [index] = obj;
+		OnRemoveObject (oldObj);
+		OnAddObject (obj);
 	}
 
 	public int Count{
@@ -98,4 +112,31 @@ public class AbstractDatabase<T> : ScriptableObject where T:IDatabaseAsset{
 
 		return false;
 	}
+
+	static public U GetDatabase<U>(string path, string name) where U : ScriptableObject{
+#if UNITY_EDITOR
+		string fullPath = @"Assets/" + path + name;
+		U database = AssetDatabase.LoadAssetAtPath<U> (fullPath);
+
+		if (database == null) {
+			System.IO.Directory.CreateDirectory (Application.dataPath + "/" + path);
+			database = ScriptableObject.CreateInstance<U> ();
+			AssetDatabase.CreateAsset (database, fullPath);
+			AssetDatabase.SaveAssets ();
+			AssetDatabase.Refresh ();
+		}
+
+		return database;
+#else
+		U GetDatabase = Resources.Load<U>(path.Replace("Resources/","") + name.ReplacePrefabOptions(".asset",""));
+		if(database == null){
+		Debug.LogWarning("No Database found of type "+typeof(U).Name);
+			return null;
+		}else{
+			return database;
+		}
+#endif
+	}
+}
+
 }
