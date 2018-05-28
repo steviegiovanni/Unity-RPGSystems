@@ -15,9 +15,9 @@ namespace RPGSystems.StatSystem{
 		/// <returns>The modifier.</returns>
 		/// <param name="statValue">Stat value.</param>
 		/// <param name="modValue">Mod value.</param>
-		public override int ApplyModifier (int statValue, float modValue)
+		public override float ApplyModifier (float statValue, float modValue)
 		{
-			return (int)(modValue);
+			return (modValue);
 		}
 
 		/// <summary>

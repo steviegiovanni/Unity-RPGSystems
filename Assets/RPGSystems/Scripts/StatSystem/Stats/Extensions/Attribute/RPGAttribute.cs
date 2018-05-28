@@ -35,7 +35,7 @@ namespace RPGSystems.StatSystem{
 		/// Gets or sets the stat base value.
 		/// </summary>
 		/// <value>The stat base value.</value>
-		public override int StatBaseValue{
+		public override float StatBaseValue{
 			get{return base.StatBaseValue + StatLevelValue + StatLinkerValue; }
 		}
 

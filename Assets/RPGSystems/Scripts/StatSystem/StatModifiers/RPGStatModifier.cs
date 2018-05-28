@@ -82,6 +82,6 @@ namespace RPGSystems.StatSystem{
 		/// <returns>The modifier.</returns>
 		/// <param name="statValue">Stat value.</param>
 		/// <param name="modValue">Mod value.</param>
-		public abstract int ApplyModifier (int statValue, float modValue);
+		public abstract float ApplyModifier (float statValue, float modValue);
 	}
 }

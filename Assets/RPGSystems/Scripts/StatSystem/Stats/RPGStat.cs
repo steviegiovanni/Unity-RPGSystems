@@ -15,7 +15,7 @@ namespace RPGSystems.StatSystem{
 		/// <summary>
 		/// The stat base value.
 		/// </summary>
-		private int _statBaseValue;
+		private float _statBaseValue;
 
 		/// <summary>
 		/// Gets or sets the name of the stat.
@@ -30,7 +30,7 @@ namespace RPGSystems.StatSystem{
 		/// Gets the stat value.
 		/// </summary>
 		/// <value>The stat value.</value>
-		public virtual int StatValue{
+		public virtual float StatValue{
 			get{ return StatBaseValue;}
 		}
 
@@ -38,7 +38,7 @@ namespace RPGSystems.StatSystem{
 		/// Gets or sets the stat base value.
 		/// </summary>
 		/// <value>The stat base value.</value>
-		public virtual int StatBaseValue{
+		public virtual float StatBaseValue{
 			get{ return _statBaseValue;}
 			set{ _statBaseValue = value;}
 		}
@@ -56,7 +56,7 @@ namespace RPGSystems.StatSystem{
 		/// </summary>
 		/// <param name="name">Name.</param>
 		/// <param name="value">Value.</param>
-		public RPGStat(string name, int value){
+		public RPGStat(string name, float value){
 			this.StatName = name;
 			this.StatBaseValue = value;
 		}

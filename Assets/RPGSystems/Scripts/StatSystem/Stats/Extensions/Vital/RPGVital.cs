@@ -11,7 +11,7 @@ namespace RPGSystems.StatSystem{
 		/// <summary>
 		/// The stat current value.
 		/// </summary>
-		private int _statCurrentValue;
+		private float _statCurrentValue;
 
 		/// <summary>
 		/// Occurs when on current value change.
@@ -22,7 +22,7 @@ namespace RPGSystems.StatSystem{
 		/// Gets or sets the stat current value.
 		/// </summary>
 		/// <value>The stat current value.</value>
-		public int StatCurrentValue{
+		public float StatCurrentValue{
 			get{
 				if (_statCurrentValue > StatValue) {
 					_statCurrentValue = StatValue;

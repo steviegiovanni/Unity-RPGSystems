@@ -11,7 +11,7 @@ namespace RPGSystems.StatSystem{
 		/// Gets the stat modifier value.
 		/// </summary>
 		/// <value>The stat modifier value.</value>
-		int StatModifierValue{ get;}
+		float StatModifierValue{ get;}
 
 		/// <summary>
 		/// Adds the modifier.

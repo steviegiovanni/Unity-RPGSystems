@@ -16,13 +16,13 @@ namespace RPGSystems.StatSystem{
 		/// <summary>
 		/// The stat mod value.
 		/// </summary>
-		private int _statModValue;
+		private float _statModValue;
 
 		/// <summary>
 		/// Gets the stat value.
 		/// </summary>
 		/// <value>The stat value.</value>
-		public override int StatValue{
+		public override float StatValue{
 			get{ return base.StatValue + StatModifierValue;}
 		}
 
@@ -101,7 +101,7 @@ namespace RPGSystems.StatSystem{
 		/// Gets the stat modifier value.
 		/// </summary>
 		/// <value>The stat modifier value.</value>
-		public int StatModifierValue {
+		public float StatModifierValue {
 			get {
 				return _statModValue;
 			}
