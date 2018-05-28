@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPGSystems.StatSystem{
+	/// <summary>
+	/// RPG default stats.
+	/// </summary>
 	public class RPGDefaultStats : RPGStatCollection {
+		/// <summary>
+		/// Configures the stats.
+		/// </summary>
 		protected override void ConfigureStats ()
 		{
 			var stamina = CreateOrGetStat<RPGAttribute>(RPGStatType.Stamina);

@@ -8,8 +8,7 @@ public class RPGStatTest : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		stats = new RPGDefaultStats();
-
+		stats = this.gameObject.AddComponent<RPGDefaultStats> ();
 
 		DisplayStatValues ();
 

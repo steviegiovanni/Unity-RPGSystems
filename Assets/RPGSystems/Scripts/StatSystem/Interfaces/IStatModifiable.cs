@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace RPGSystems.StatSystem{
+	/// <summary>
+	/// Allow stat to use modifiers
+	/// </summary>
 	public interface IStatModifiable{
 		int StatModifierValue{ get;}
 

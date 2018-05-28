@@ -49,11 +49,11 @@ namespace RPGSystems.StatSystem{
 				float sum = 0, max = 0;
 				foreach (var mod in group) {
 					if (!mod.Stacks) {
-						if (mod.ModValue > max) {
-							max = mod.ModValue;
+						if (mod.Value > max) {
+							max = mod.Value;
 						}
 					} else {
-						sum += mod.ModValue;
+						sum += mod.Value;
 					}
 				}
 
