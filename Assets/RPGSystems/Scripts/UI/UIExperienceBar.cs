@@ -23,10 +23,8 @@ public class UIExperienceBar : MonoBehaviour {
 
 	void UpdateUI(){
 		float expPercent = Mathf.Clamp ((float) entity.EntityLevel.ExpCurrent / (float) entity.EntityLevel.ExpRequired, 0f, 1f);
-
 		float newRightOffset = -expBarArea.rect.width + expBarArea.rect.width * expPercent;
-
-		expBarFill.offsetMax = new Vector2 (newRightOffset, expBarFill.offsetMax.y);
+		expBarFill.offsetMax = new Vector2 ((int)newRightOffset, expBarFill.offsetMax.y);
 
 		expBarValues.text = string.Format ("{0} / {1} (Level {2})", entity.EntityLevel.ExpCurrent, entity.EntityLevel.ExpRequired, entity.EntityLevel.Level);
 	}
