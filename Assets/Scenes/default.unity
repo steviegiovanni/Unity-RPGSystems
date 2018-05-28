@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f220bd68c126094da5b2ef214469496, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityLevel: {fileID: 294544992}
+  _entityLevel: {fileID: 294544992}
 --- !u!4 &294544994
 Transform:
   m_ObjectHideFlags: 0
@@ -292,6 +292,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1093620908 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1634133345194952, guid: 2e4875eadb2b9cf42a6b108588d7f797,
+    type: 2}
+  m_PrefabInternal: {fileID: 1706023075}
+--- !u!114 &1093620909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1093620908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5bddfb6a2975a1499c8c3ec5b77535e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 294544993}
+  expBarArea: {fileID: 989645960}
+  expBarFill: {fileID: 7761617}
+  expBarValues: {fileID: 393445080}
+--- !u!1 &1370358860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1370358862}
+  - component: {fileID: 1370358861}
+  m_Layer: 0
+  m_Name: RPGStatTest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1370358861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1370358860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79afae711822e649a14a3c1627b4ca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1370358862
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1370358860}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1552447090
 GameObject:
@@ -569,7 +629,18 @@ Prefab:
       propertyPath: expBarValues
       value: 
       objectReference: {fileID: 393445080}
-    m_RemovedComponents: []
+    - target: {fileID: 224353897860659220, guid: 2e4875eadb2b9cf42a6b108588d7f797,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224353897860659220, guid: 2e4875eadb2b9cf42a6b108588d7f797,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114052096276718998, guid: 2e4875eadb2b9cf42a6b108588d7f797, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 2e4875eadb2b9cf42a6b108588d7f797, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1769264999
@@ -583,7 +654,6 @@ GameObject:
   - component: {fileID: 1769265003}
   - component: {fileID: 1769265002}
   - component: {fileID: 1769265001}
-  - component: {fileID: 1769265005}
   - component: {fileID: 1769265000}
   m_Layer: 0
   m_Name: Main Camera
@@ -666,14 +736,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1769265005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1769264999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e79afae711822e649a14a3c1627b4ca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
