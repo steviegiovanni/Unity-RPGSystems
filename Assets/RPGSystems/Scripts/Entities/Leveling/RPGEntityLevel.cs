@@ -11,13 +11,13 @@ public abstract class RPGEntityLevel : MonoBehaviour {
 	/// The level.
 	/// </summary>
 	[SerializeField]
-	private int _level = 0;
+	private int _level = 1;
 
 	/// <summary>
 	/// The level minimum.
 	/// </summary>
 	[SerializeField]
-	private int _levelMin = 0;
+	private int _levelMin = 1;
 
 	/// <summary>
 	/// The level max.
