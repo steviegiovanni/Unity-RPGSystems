@@ -11,7 +11,7 @@ namespace RPGSystems.Utility.Database{
 		protected override void OnAddObject (T obj)
 		{
 			#if UNITY_EDITOR
-			obj.hideFlags = HideFlags.HideInHierarchy;
+			//obj.hideFlags = HideFlags.HideInHierarchy;
 			UnityEditor.AssetDatabase.AddObjectToAsset(obj, this);
 			UnityEditor.EditorUtility.SetDirty(this);
 			#endif
